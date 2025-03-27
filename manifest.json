@@ -1,10 +1,14 @@
 {
-    "name": "Prof Bruno",
-    "short_name": "BRUNO",
+    "name": "ProfBT",
+    "short_name": "ProfBT",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#ffffff",
-    "theme_color": "#38302E",
+    "theme_color": "#000000",
+    "description": "Este é o app ProfBT, onde você pode acessar conteúdo interativo.",
+    "id": "profbt-app",
+    "dir": "ltr",
+    "lang": "pt",
     "icons": [
       {
         "src": "/icon-192.png",
@@ -16,6 +20,18 @@
         "sizes": "512x512",
         "type": "image/png"
       }
-    ]
+    ],
+    "orientation": "portrait",
+    "screenshots": [
+      {
+        "src": "/screenshot1.png",
+        "sizes": "320x480",
+        "type": "image/png"
+      }
+    ],
+    "categories": ["Education"],
+    "prefer_related_applications": false,
+    "push": true,
+    "scope": "/"
   }
   
