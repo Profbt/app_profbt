@@ -1,15 +1,12 @@
-{
-    "icons": [
-      {
-        "src": "/icon-192.png", // 🟢 Altere este caminho para o ícone de 192x192
-        "sizes": "192x192",
-        "type": "image/png"
-      },
-      {
-        "src": "/icon-512.png", // 🟢 Altere este caminho para o ícone de 512x512
-        "sizes": "512x512",
-        "type": "image/png"
-      }
-    ]
-  }
-  
+self.addEventListener("install", (event) => {
+    console.log("Service Worker instalado.");
+    self.skipWaiting(); // Garante que o SW seja ativado imediatamente
+});
+
+self.addEventListener("activate", (event) => {
+    console.log("Service Worker ativado.");
+});
+
+self.addEventListener("fetch", (event) => {
+    console.log("Interceptando requisição:", event.request.url);
+});
