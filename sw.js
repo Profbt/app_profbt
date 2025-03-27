@@ -1,6 +1,6 @@
 self.addEventListener("install", (event) => {
     console.log("Service Worker instalado.");
-    self.skipWaiting(); // Garante que o SW seja ativado imediatamente
+    self.skipWaiting();
 });
 
 self.addEventListener("activate", (event) => {
