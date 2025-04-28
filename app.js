@@ -12,7 +12,7 @@ const categories = [
                 icon: "chalkboard-teacher"
             },
             {
-                name: "Portal do Aluno Vic. Rijo",
+                name: "Portal do Aluno Vicente Rijo",
                 url: "https://portaldoalunovr.vercel.app/",
                 logo: "/assets/logos/vr2.png",
                 description: "Acesso a notas, horários e materiais didáticos",
