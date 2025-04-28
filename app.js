@@ -12,7 +12,7 @@ const categories = [
                 icon: "chalkboard-teacher"
             },
             {
-                name: "Portal do Aluno Vicente Rijo",
+                name: "Portal do Aluno Vic. Rijo",
                 url: "https://portaldoalunovr.vercel.app/",
                 logo: "/assets/logos/vr2.png",
                 description: "Acesso a notas, horários e materiais didáticos",
@@ -148,6 +148,13 @@ const categories = [
                 logo: "https://images.seeklogo.com/logo-png/61/1/grok-logo-png_seeklogo-613403.png",
                 description: "IA do X (Twitter) para insights",
                 icon: "robot"
+            },
+            {
+                name: "There's an AI for That",
+                url: "https://theresanaiforthat.com/",
+                logo: "https://theresanaiforthat.com/favicon.ico",
+                description: "Catálogo de ferramentas de IA para todas as áreas",
+                icon: "list"
             }
         ]
     },

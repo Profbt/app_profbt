@@ -1,6 +1,6 @@
 {
     "name": "PROFBT - Recursos Educacionais",
-    "short_name": "PROFBT",
+    "short_name": "Profbt",
     "description": "Portal de recursos educacionais para professores e alunos",
     "start_url": "/",
     "display": "standalone",
