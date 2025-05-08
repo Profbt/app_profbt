@@ -112,6 +112,24 @@ nav {
   color: rgba(255, 255, 255, 0.95);
 }
 
+/* Emoji de mão acenando */
+.waving-hand {
+  display: inline-block;
+  animation: waving 2.5s ease infinite;
+  transform-origin: 70% 70%;
+}
+
+@keyframes waving {
+  0% { transform: rotate(0deg); }
+  10% { transform: rotate(14deg); }
+  20% { transform: rotate(-8deg); }
+  30% { transform: rotate(14deg); }
+  40% { transform: rotate(-4deg); }
+  50% { transform: rotate(10deg); }
+  60% { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
+}
+
 /* Ajuste do container de busca e tema */
 .header-controls {
   width: 100%;
@@ -288,15 +306,15 @@ nav {
 
 /* Corrige a cor do texto no tema claro */
 [data-theme="light"] {
-    --text-light: #2d3748; /* Mantém o cinza escuro padrão */
-    --primary-color: #ffffff; /* Força o branco nos elementos chave */
-  }
+  --text-light: #2d3748; /* Mantém o cinza escuro padrão */
+  --primary-color: #ffffff; /* Força o branco nos elementos chave */
+}
   
-  /* Garante a persistência do tema */
-  html[data-theme] {
-    background: var(--background);
-    color: var(--text);
-  }
+/* Garante a persistência do tema */
+html[data-theme] {
+  background: var(--background);
+  color: var(--text);
+}
 
 [data-theme="dark"] .resource-card {
   background: var(--card-bg-dark);

@@ -54,7 +54,7 @@
 
             <h1 class="profbt animate__animated animate__fadeInUp">Central do Profbt</h1>
             <h2 class="header-title animate__animated animate__fadeInUp animate__delay-1s">
-                <span class="text-yellow-300">👋</span> Bem-vindo(a) ao seu portal educacional!
+                <span class="text-yellow-300 waving-hand">👋</span> Bem-vindo(a) ao seu portal educacional!
                 <div class="text-lg mt-3 opacity-90">Encontre todos os recursos que você precisa aqui.</div>
             </h2>
         </nav>
@@ -82,15 +82,15 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Inicializa AOS
+        // Inicializa AOS com configurações mais leves
         AOS.init({
-            duration: 1000,
-            offset: 100,
-            once: true,
+            duration: 600,          // Reduzido para 600ms
+            offset: 40,             // Reduzido para 40px
+            once: true,             // Só executa uma vez
             mirror: false,
             anchorPlacement: 'top-bottom',
-            easing: 'ease-out-cubic',
-            disable: false
+            easing: 'ease',         // Simplificado
+            disable: window.innerWidth < 768 // Desabilita em dispositivos móveis
         });
     </script>
     <script src="app.js"></script>

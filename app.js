@@ -12,7 +12,7 @@ const categories = [
                 icon: "chalkboard-teacher"
             },
             {
-                name: "Portal do Aluno Vicente Rijo",
+                name: "Portal do Aluno Vic. Rijo",
                 url: "https://portaldoalunovr.vercel.app/",
                 logo: "/assets/logos/vr2.png",
                 description: "Acesso a notas, horários e materiais didáticos",
@@ -363,19 +363,79 @@ const categories = [
                 icon: "print"
             }
         ]
+    },
+    {
+        title: "Padlets das Turmas",
+        icon: "clipboard-list",
+        links: [
+            {
+                name: "3º SIS - Desenvolvimento de Sistemas",
+                url: "https://padlet.com/brunobarroscarvalho/3-desenvolvimento-de-sistemas-vr-ga5dvddjb8tu4519",
+                logo: "https://padlet.com/favicon.ico",
+                description: "Padlet da turma de Desenvolvimento de Sistemas",
+                icon: "code-branch"
+            },
+            {
+                name: "1º MAR",
+                url: "https://padlet.com/brunobarroscarvalho/1-s-rie-ceng-m999n4mca08cwhkh",
+                logo: "https://padlet.com/favicon.ico",
+                description: "Padlet da turma 1º MAR - CENG",
+                icon: "school"
+            },
+            {
+                name: "3º MAR",
+                url: "https://padlet.com/brunobarroscarvalho/3-s-rie-mar-hv94l07s8av6451n",
+                logo: "https://padlet.com/favicon.ico",
+                description: "Padlet da turma 3º MAR",
+                icon: "graduation-cap"
+            },
+            {
+                name: "7º INT VR",
+                url: "https://padlet.com/brunobarroscarvalho/7-ano-vr-a48nm36culhq4c48",
+                logo: "https://padlet.com/favicon.ico",
+                description: "Padlet da turma 7º INT VR",
+                icon: "child"
+            },
+            {
+                name: "THACKATHON",
+                url: "https://padlet.com/salgadofelipe07/breakout-room/d6AO26l9rj3ovojL-8wOpvYgk34oz6AYo",
+                logo: "https://padlet.com/favicon.ico",
+                description: "Padlet para o THACKATHON",
+                icon: "users"
+            }
+        ]
     }
 ];
 
-// Renderização dos cards
+// Função para verificar o primeiro acesso e fazer a mão abanar
+function checkFirstVisit() {
+    const hasVisited = localStorage.getItem('hasVisitedBefore');
+    const welcomeEmoji = document.querySelector('.text-yellow-300');
+    
+    if (welcomeEmoji) {
+        // Garante que o emoji tenha a classe para animação
+        welcomeEmoji.classList.add('waving-hand');
+        
+        if (!hasVisited) {
+            welcomeEmoji.style.fontSize = '1.5em';
+            welcomeEmoji.style.opacity = '1';
+            localStorage.setItem('hasVisitedBefore', 'true');
+        } else {
+            welcomeEmoji.style.opacity = '0.8';
+        }
+    }
+}
+
+// Atualizar função de criação de cards para reduzir efeitos
 function createResourceCard(resource, index) {
     const card = document.createElement('div');
     card.className = 'resource-card';
     
-    // Configuração da animação do card
-    card.setAttribute('data-aos', 'zoom-in-up');
-    card.setAttribute('data-aos-duration', '800');
-    card.setAttribute('data-aos-delay', (index * 100).toString());
-    card.setAttribute('data-aos-offset', '10');
+    // Configuração simplificada da animação do card
+    card.setAttribute('data-aos', 'fade-up');
+    card.setAttribute('data-aos-duration', '500'); // Reduzido para 500ms
+    // Limita o delay a um máximo de 200ms para evitar longos carregamentos
+    card.setAttribute('data-aos-delay', Math.min(index * 50, 200).toString());
     
     card.innerHTML = `
         <div class="card-content">
