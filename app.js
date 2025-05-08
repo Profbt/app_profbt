@@ -379,7 +379,7 @@ const categories = [
                 name: "1º MAR",
                 url: "https://padlet.com/brunobarroscarvalho/1-s-rie-ceng-m999n4mca08cwhkh",
                 logo: "https://padlet.com/favicon.ico",
-                description: "Padlet da turma 1º MAR - CENG",
+                description: "Padlet da turma 1º MAR",
                 icon: "school"
             },
             {
