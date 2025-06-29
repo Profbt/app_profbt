@@ -407,21 +407,21 @@ const categories = [
     }
 ];
 
-// Função para verificar o primeiro acesso e fazer a mão abanar
+// Função para verificar o primeiro acesso e fazer o ícone tecnológico brilhar
 function checkFirstVisit() {
     const hasVisited = localStorage.getItem('hasVisitedBefore');
-    const welcomeEmoji = document.querySelector('.waving-hand');
+    const techIcon = document.querySelector('.tech-welcome-icon');
     
-    if (welcomeEmoji) {
-        // Garante que o emoji tenha a classe para animação
-        welcomeEmoji.classList.add('waving-hand');
+    if (techIcon) {
+        // Garante que o ícone tenha a classe para animação
+        techIcon.classList.add('tech-welcome-icon');
         
         if (!hasVisited) {
-            welcomeEmoji.style.fontSize = '1.5em';
-            welcomeEmoji.style.opacity = '1';
+            techIcon.style.fontSize = '1.5em';
+            techIcon.style.opacity = '1';
             localStorage.setItem('hasVisitedBefore', 'true');
         } else {
-            welcomeEmoji.style.opacity = '0.8';
+            techIcon.style.opacity = '0.8';
         }
     }
 }
