@@ -410,7 +410,7 @@ const categories = [
 // Função para verificar o primeiro acesso e fazer a mão abanar
 function checkFirstVisit() {
     const hasVisited = localStorage.getItem('hasVisitedBefore');
-    const welcomeEmoji = document.querySelector('.text-yellow-300');
+    const welcomeEmoji = document.querySelector('.waving-hand');
     
     if (welcomeEmoji) {
         // Garante que o emoji tenha a classe para animação
@@ -431,11 +431,7 @@ function createResourceCard(resource, index) {
     const card = document.createElement('div');
     card.className = 'resource-card';
     
-    // Configuração simplificada da animação do card
-    card.setAttribute('data-aos', 'fade-up');
-    card.setAttribute('data-aos-duration', '500'); // Reduzido para 500ms
-    // Limita o delay a um máximo de 200ms para evitar longos carregamentos
-    card.setAttribute('data-aos-delay', Math.min(index * 50, 200).toString());
+    // Removidas todas as animações AOS para melhorar performance
     
     card.innerHTML = `
         <div class="card-content">
@@ -468,14 +464,10 @@ function renderCategories() {
         const categorySection = document.createElement('section');
         categorySection.className = 'category';
         
-        // Configuração da animação da categoria
-        categorySection.setAttribute('data-aos', 'fade-right');
-        categorySection.setAttribute('data-aos-duration', '1000');
-        categorySection.setAttribute('data-aos-delay', (categoryIndex * 200).toString());
-        categorySection.setAttribute('data-aos-offset', '50');
+        // Removidas todas as animações AOS para melhorar performance
         
         categorySection.innerHTML = `
-            <h2 class="category-title" data-aos="fade-down" data-aos-duration="800">
+            <h2 class="category-title">
                 <i class="fas fa-${category.icon}"></i>
                 ${category.title}
             </h2>
@@ -490,10 +482,7 @@ function renderCategories() {
         container.appendChild(categorySection);
     });
 
-    // Atualiza as animações após renderizar todo o conteúdo
-    setTimeout(() => {
-        AOS.refresh();
-    }, 100);
+    // Removida a atualização do AOS
 }
 
 // Sistema de Tema
@@ -549,20 +538,51 @@ function filterResources() {
         
         if (title.includes(searchTerm) || description.includes(searchTerm)) {
             card.style.display = 'block';
-            // Reativa a animação com um pequeno delay
-            setTimeout(() => {
-                card.classList.add('aos-animate');
-            }, 50);
         } else {
             card.style.display = 'none';
-            card.classList.remove('aos-animate');
         }
     });
 
-    // Atualiza o AOS após filtrar
-    setTimeout(() => {
-        AOS.refresh();
-    }, 150);
+    // Removida a atualização do AOS
+}
+
+// --- PWA Install Button for Mobile ---
+let deferredPrompt = null;
+
+function isMobileDevice() {
+    return /android|iphone|ipad|ipod|opera mini|iemobile|mobile/i.test(navigator.userAgent);
+}
+
+function isInStandaloneMode() {
+    return (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true);
+}
+
+function setupPwaInstallButton() {
+    const installBtn = document.getElementById('installPwaBtn');
+    if (!installBtn) return;
+
+    // Esconde o botão por padrão
+    installBtn.style.display = 'none';
+
+    // Só mostra em mobile e se não estiver instalado
+    if (isMobileDevice() && !isInStandaloneMode()) {
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            installBtn.style.display = 'inline-block';
+        });
+
+        installBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === 'accepted') {
+                    installBtn.style.display = 'none';
+                }
+                deferredPrompt = null;
+            }
+        });
+    }
 }
 
 // Inicialização
@@ -570,6 +590,12 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
         // Inicializa o tema
         initTheme();
+        
+        // Verificar primeiro acesso
+        checkFirstVisit();
+        
+        // Setup botão de instalar PWA
+        setupPwaInstallButton();
         
         // Remove o skeleton loader
         const loading = document.getElementById('loading');
@@ -588,11 +614,6 @@ document.addEventListener('DOMContentLoaded', () => {
             debounceTimer = setTimeout(filterResources, 300);
         });
         
-        // Atualiza as animações quando a página terminar de carregar
-        window.addEventListener('load', () => {
-            AOS.refresh();
-        });
-
         // Atualiza o ano no footer
         const currentYearElement = document.getElementById('currentYear');
         if (currentYearElement) {

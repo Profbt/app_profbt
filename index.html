@@ -32,65 +32,66 @@
 </head>
 <body class="bg-gray-50 dark:bg-slate-900 transition-colors duration-300">
     <header>
-        <nav class="container mx-auto px-4 py-3">
+        <nav class="container">
             <div class="header-controls">
-                <div class="flex items-center gap-4">
-                    <div class="relative">
-                        <input type="text" id="searchInput" 
-                               placeholder="Pesquisar recursos...">
-                        <i class="fas fa-search absolute right-4 top-1/2 transform -translate-y-1/2 text-white/70"></i>
-                    </div>
-                    <button id="themeToggle">
-                        <i class="fas fa-moon"></i>
-                    </button>
+                <div class="search-container">
+                    <input type="text" id="searchInput" 
+                           placeholder="Pesquisar recursos...">
+                    <i class="fas fa-search"></i>
                 </div>
+                <button id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
             </div>
             
-            <div class="logo-container animate__animated animate__fadeInDown">
+            <div class="logo-container">
                 <div class="logo-wrapper">
                     <img src="assets/logos/logo.svg" alt="Logo" class="logo">
                 </div>
             </div>
 
-            <h1 class="profbt animate__animated animate__fadeInUp">Central do Profbt</h1>
-            <h2 class="header-title animate__animated animate__fadeInUp animate__delay-1s">
-                <span class="text-yellow-300 waving-hand">👋</span> Bem-vindo(a) ao seu portal educacional!
+            <h1 class="profbt">Central do Profbt</h1>
+            <h2 class="header-title">
+                <span class="waving-hand">👋</span> Bem-vindo(a) ao seu portal educacional!
                 <div class="text-lg mt-3 opacity-90">Encontre todos os recursos que você precisa aqui.</div>
             </h2>
         </nav>
     </header>
 
-    <main class="container mx-auto px-4 py-8" id="categoriesContainer">
-        <div id="loading" class="space-y-8">
-            <!-- Loading Skeleton -->
-            <div class="loading-skeleton h-16 rounded-xl"></div>
-            <div class="loading-skeleton h-32 rounded-xl"></div>
-            <div class="loading-skeleton h-32 rounded-xl"></div>
+    <main>
+        <div class="container" id="categoriesContainer">
+            <div id="loading" class="space-y-8">
+                <!-- Loading Skeleton -->
+                <div class="loading-skeleton h-16 rounded-xl"></div>
+                <div class="loading-skeleton h-32 rounded-xl"></div>
+                <div class="loading-skeleton h-32 rounded-xl"></div>
+            </div>
         </div>
     </main>
 
-    <footer class="py-8 mt-16 border-t border-gray-200 dark:border-gray-700 transition-colors duration-300">
-        <div class="container mx-auto px-4 text-center">
-            <p class="text-white text-lg animate__animated animate__fadeIn">
-                2025&copy; <span id="currentYear"></span> - Feito com 
-                <i class="fas fa-heart text-red-500 animate__animated animate__heartBeat animate__infinite"></i> 
-                por Prof. Bruno Carvalho
-            </p>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>
+                    2025&copy; - Feito com <i class="fas fa-heart footer-heart"></i> por <span class="footer-name">Prof. Bruno Carvalho</span>.
+                </p>
+                <button id="installPwaBtn" style="display:none; margin-top:1.5em; padding:0.8em 1.5em; border-radius:1em; background:#0d9488; color:#fff; font-weight:600; border:none; font-size:1.1em; box-shadow:0 2px 8px rgba(0,0,0,0.08); cursor:pointer;">Instalar aplicativo</button>
+            </div>
         </div>
     </footer>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Inicializa AOS com configurações mais leves
+        // Inicializa AOS com configurações mínimas
         AOS.init({
-            duration: 600,          // Reduzido para 600ms
-            offset: 40,             // Reduzido para 40px
+            duration: 400,          // Reduzido para 400ms
+            offset: 20,             // Reduzido para 20px
             once: true,             // Só executa uma vez
             mirror: false,
             anchorPlacement: 'top-bottom',
             easing: 'ease',         // Simplificado
-            disable: window.innerWidth < 768 // Desabilita em dispositivos móveis
+            disable: true           // Desabilita completamente o AOS
         });
     </script>
     <script src="app.js"></script>
