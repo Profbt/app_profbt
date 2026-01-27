@@ -90,7 +90,7 @@ const categories = [
             {
                 name: "VS Code",
                 url: "https://vscode.dev/",
-                logo: "https://code.visualstudio.com/assets/images/code-stable.png",
+                logo: "https://code.visualstudio.com/assets/branding/code-stable.png",
                 description: "Editor de código online",
                 icon: "code"
             }
@@ -131,7 +131,7 @@ const categories = [
             {
                 name: "Manus",
                 url: "https://www.manus.ai",
-                logo: "https://pbs.twimg.com/profile_images/1906544773911166976/WsIcwx_d_400x400.jpg",
+                logo: "/assets/logos/manus.png",
                 description: "IA para análise de dados complexos",
                 icon: "hand-paper"
             },
