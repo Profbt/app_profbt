@@ -1,130 +1,185 @@
-const CACHE_NAME = 'profbt-v1';
-const STATIC_CACHE = 'static-cache-v1';
-const DYNAMIC_CACHE = 'dynamic-cache-v1';
+const CACHE_VERSION = 'v9';
+const CACHE_NAME = `profbt-${CACHE_VERSION}`;
+const STATIC_CACHE = `static-${CACHE_VERSION}`;
+const DYNAMIC_CACHE = `dynamic-${CACHE_VERSION}`;
+const IMAGE_CACHE = `image-${CACHE_VERSION}`;
 
-const STATIC_RESOURCES = [
+// Limites e políticas de cache
+const CACHE_LIMITS = {
+    dynamic: 50,    // máximo de entradas no dynamic cache
+    images: 30      // máximo de imagens em cache
+};
+
+const STATIC_ASSETS = [
     '/',
     '/index.html',
-    '/offline.html',
     '/styles.css',
     '/app.js',
-    '/manifest.json',
-    '/assets/logos/vr2.png',
-    '/assets/logos/alura.png',
-    '/assets/logos/quizziz.png',
-    '/assets/logos/112.png'
+    '/manifest.json'
 ];
 
-const EXTERNAL_RESOURCES = [
+// URLs externas essenciais (CDNs)
+const EXTERNAL_CDN = [
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
-    'https://unpkg.com/aos@next/dist/aos.css',
-    'https://unpkg.com/aos@next/dist/aos.js'
+    'https://fonts.googleapis.com/css2',
+    'https://cdn.jsdelivr.net/npm/simple-icons'
 ];
 
-// Instalação do Service Worker
+// Padrões de recursos que devem ser cacheados
+const PATTERNS = {
+    images: /\.(png|jpe?g|gif|svg|webp|ico)$/i,
+    fonts: /\.(woff2?|ttf|otf|eot)$/i,
+    cdn: /cdn\.jsdelivr\.net|cdnjs\.cloudflare\.com|fonts\.googleapis\.com/i
+};
+
+// ============ INSTALAÇÃO ============
 self.addEventListener('install', (event) => {
+    console.log(`[SW] Installing ${CACHE_NAME}`);
     event.waitUntil(
-        Promise.all([
-            // Cache recursos estáticos
-            caches.open(STATIC_CACHE).then(cache => {
-                console.log('Caching static resources');
-                return cache.addAll(STATIC_RESOURCES);
-            }),
-            // Cache recursos externos
-            caches.open(DYNAMIC_CACHE).then(cache => {
-                console.log('Caching external resources');
-                return cache.addAll(EXTERNAL_RESOURCES);
-            })
-        ])
-        .then(() => self.skipWaiting()) // Força ativação imediata
+        caches.open(STATIC_CACHE)
+            .then(cache => cache.addAll(STATIC_ASSETS))
+            .then(() => self.skipWaiting())
+            .catch(err => console.warn('[SW] Install cache failed:', err))
     );
 });
 
-// Ativação e limpeza de caches antigos
+// ============ ATIVAÇÃO E LIMPEZA ============
 self.addEventListener('activate', (event) => {
+    console.log(`[SW] Activating ${CACHE_NAME}`);
     event.waitUntil(
         Promise.all([
-            // Limpa caches antigos
-            caches.keys().then(cacheNames => {
-                return Promise.all(
-                    cacheNames.map(cacheName => {
-                        if (![STATIC_CACHE, DYNAMIC_CACHE].includes(cacheName)) {
-                            console.log('Deleting old cache:', cacheName);
-                            return caches.delete(cacheName);
-                        }
-                    })
-                );
-            }),
-            // Toma controle de clientes não controlados
+            // Limpar caches de versões antigas
+            caches.keys().then(keys =>
+                Promise.all(
+                    keys
+                        .filter(key => !key.includes(CACHE_VERSION))
+                        .map(key => {
+                            console.log(`[SW] Deleting old cache: ${key}`);
+                            return caches.delete(key);
+                        })
+                )
+            ),
+            // Assumir controle imediato dos clientes
             self.clients.claim()
         ])
     );
 });
 
-// Estratégia de cache: Network First para recursos dinâmicos, Cache First para estáticos
+// ============ ESTRATÉGIAS DE FETCH ============
 self.addEventListener('fetch', (event) => {
-    const url = new URL(event.request.url);
+    const { request } = event;
+    const url = new URL(request.url);
+
+    // Ignorar requisições não-http e métodos não-GET
+    if (!url.protocol.startsWith('http') || request.method !== 'GET') return;
+
+    // Navegação: Network First com fallback
+    if (request.mode === 'navigate') {
+        event.respondWith(networkFirst(request, '/index.html'));
+        return;
+    }
+
+    // CDNs externos: Stale-While-Revalidate
+    if (PATTERNS.cdn.test(url.hostname)) {
+        event.respondWith(staleWhileRevalidate(request));
+        return;
+    }
+
+    // Imagens: Cache First com fallback e limite
+    if (PATTERNS.images.test(url.pathname)) {
+        event.respondWith(cacheFirstWithLimit(request, IMAGE_CACHE));
+        return;
+    }
+
+    // Demais recursos: Stale-While-Revalidate com dynamic cache
+    event.respondWith(staleWhileRevalidate(request, DYNAMIC_CACHE));
+});
+
+// ============ ESTRATÉGIAS ============
+
+// Network First: tenta rede, fallback para cache
+async function networkFirst(request, fallbackUrl) {
+    try {
+        const response = await fetch(request);
+        if (response.ok) {
+            const cache = await caches.open(STATIC_CACHE);
+            await cache.put(request, response.clone());
+        }
+        return response;
+    } catch (err) {
+        const cached = await caches.match(request);
+        return cached || caches.match(fallbackUrl);
+    }
+}
+
+// Stale-While-Revalidate: retorna cache, atualiza em background
+async function staleWhileRevalidate(request, cacheName = DYNAMIC_CACHE) {
+    const cached = await caches.match(request);
     
-    // Ignora requisições para chrome-extension
-    if (url.protocol === 'chrome-extension:') return;
-
-    // Estratégia baseada no tipo de requisição
-    if (event.request.mode === 'navigate') {
-        // Para navegação, tenta rede primeiro, fallback para offline
-        event.respondWith(
-            fetch(event.request)
-                .catch(() => caches.match('/offline.html'))
-        );
-    } else if (STATIC_RESOURCES.some(resource => event.request.url.includes(resource))) {
-        // Cache First para recursos estáticos
-        event.respondWith(
-            caches.match(event.request)
-                .then(response => response || fetch(event.request))
-        );
-    } else {
-        // Network First para outros recursos
-        event.respondWith(
-            fetch(event.request)
-                .then(response => {
-                    // Cache a resposta se for válida
-                    if (response && response.status === 200) {
-                        const responseToCache = response.clone();
-                        caches.open(DYNAMIC_CACHE)
-                            .then(cache => cache.put(event.request, responseToCache));
-                    }
-                    return response;
-                })
-                .catch(() => caches.match(event.request))
-        );
-    }
-});
-
-// Evento de sincronização em background
-self.addEventListener('sync', (event) => {
-    if (event.tag === 'sync-data') {
-        event.waitUntil(
-            // Implementar lógica de sincronização quando necessário
-            Promise.resolve()
-        );
-    }
-});
-
-// Evento de push notification
-self.addEventListener('push', (event) => {
-    if (event.data) {
-        const options = {
-            body: event.data.text(),
-            icon: '/assets/icons/icon-192x192.png',
-            badge: '/assets/icons/badge-72x72.png',
-            vibrate: [100, 50, 100],
-            data: {
-                dateOfArrival: Date.now(),
-                primaryKey: 1
+    const fetchPromise = fetch(request)
+        .then(response => {
+            if (response.ok) {
+                caches.open(cacheName).then(cache => {
+                    cache.put(request, response.clone());
+                    // Limitar tamanho do cache
+                    limitCache(cacheName);
+                });
             }
-        };
+            return response;
+        })
+        .catch(() => cached);
 
-        event.waitUntil(
-            self.registration.showNotification('PROFBT', options)
-        );
+    return cached || fetchPromise;
+}
+
+// Cache First com limite de entradas
+async function cacheFirstWithLimit(request, cacheName) {
+    const cached = await caches.match(request);
+    if (cached) return cached;
+
+    try {
+        const response = await fetch(request);
+        if (response.ok) {
+            const cache = await caches.open(cacheName);
+            await cache.put(request, response.clone());
+            await limitCache(cacheName, IMAGE_CACHE);
+        }
+        return response;
+    } catch (err) {
+        // Fallback para placeholder ou resposta vazia
+        return new Response('', { status: 404 });
+    }
+}
+
+// Limitar número de entradas no cache
+async function limitCache(cacheName, limit = CACHE_LIMITS.dynamic) {
+    try {
+        const cache = await caches.open(cacheName);
+        const keys = await cache.keys();
+        if (keys.length > limit) {
+            // Remover os mais antigos (primeiros da lista)
+            const toDelete = keys.slice(0, keys.length - limit);
+            await Promise.all(toDelete.map(key => cache.delete(key)));
+            console.log(`[SW] Cache ${cacheName} trimmed to ${limit} entries`);
+        }
+    } catch (err) {
+        console.warn('[SW] Cache limit failed:', err);
+    }
+}
+
+// ============ COMUNICAÇÃO COM O CLIENT ============
+self.addEventListener('message', (event) => {
+    if (event.data && event.data.type === 'SKIP_WAITING') {
+        self.skipWaiting();
+    }
+    if (event.data && event.data.type === 'CACHE_STATUS') {
+        // Reportar status do cache para o cliente
+        caches.keys().then(keys => {
+            event.source.postMessage({
+                type: 'CACHE_STATUS',
+                caches: keys,
+                version: CACHE_NAME
+            });
+        });
     }
 });

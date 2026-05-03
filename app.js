@@ -33,10 +33,10 @@ const categories = [
                 icon: "laptop-code"
             },
             {
-                name: "Quizziz",
-                url: "https://quizizz.com/login?source=top_nav_login_button&ctaSource=top_nav_login_button&ref=header_tab&webflow_referrer=webflow&fromPage=%2F&lng=pt-BR",
-                logo: "/assets/logos/quizziz.png",
-                description: "Avaliações e desafios gamificados",
+                name: "Wayground",
+                url: "https://wayground.com/",
+                logo: "https://cdn.prod.website-files.com/68355113496452bf05789e95/68480ff9c322e13a2f937a22_Logo_Dark_Primary_Horizontal_MINIMUM.svg",
+                description: "Plataforma de avaliações e desafios gamificados com IA",
                 icon: "question"
             },
             {
@@ -90,9 +90,51 @@ const categories = [
             {
                 name: "VS Code",
                 url: "https://vscode.dev/",
-                logo: "https://code.visualstudio.com/assets/branding/code-stable.png",
+                logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/visualstudiocode.svg",
                 description: "Editor de código online",
                 icon: "code"
+            },
+            {
+                name: "Replit",
+                url: "https://replit.com/",
+                logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/replit.svg",
+                description: "IDE online colaborativa para múltiplas linguagens",
+                icon: "laptop-code"
+            },
+            {
+                name: "CodePen",
+                url: "https://codepen.io/",
+                logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/codepen.svg",
+                description: "Editor front-end ao vivo com comunidade",
+                icon: "pen-nib"
+            },
+            {
+                name: "Glitch",
+                url: "https://glitch.com/",
+                logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/glitch.svg",
+                description: "Criação rápida de apps web com hospedar",
+                icon: "bolt"
+            },
+            {
+                name: "Bolt (bolt.new)",
+                url: "https://bolt.new/",
+                logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/stackblitz.svg",
+                description: "Crie apps web completos com IA no navegador",
+                icon: "bolt"
+            },
+            {
+                name: "Lovable",
+                url: "https://lovable.dev/",
+                logo: "https://lovable.dev/favicon.svg",
+                description: "Desenvolvimento assistido por IA com foco em produtos",
+                icon: "heart"
+            },
+            {
+                name: "Glide",
+                url: "https://www.glideapps.com/",
+                logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/glide.svg",
+                description: "Crie apps a partir de planilhas sem código",
+                icon: "mobile-alt"
             }
         ]
     },
@@ -122,6 +164,13 @@ const categories = [
                 icon: "user-astronaut"
             },
             {
+                name: "Gemini (Google)",
+                url: "https://gemini.google.com/",
+                logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/googlegemini.svg",
+                description: "IA do Google com integração ao ecossistema",
+                icon: "star"
+            },
+            {
                 name: "Perplexity",
                 url: "https://www.perplexity.ai/",
                 logo: "https://images.seeklogo.com/logo-png/61/1/perplexity-ai-icon-black-logo-png_seeklogo-611679.png",
@@ -131,16 +180,9 @@ const categories = [
             {
                 name: "Manus",
                 url: "https://www.manus.ai",
-                logo: "/assets/logos/manus.png",
+                logo: "https://files.manuscdn.com/assets/image/brand/image/Manus-Icon.png",
                 description: "IA para análise de dados complexos",
                 icon: "hand-paper"
-            },
-            {
-                name: "ChatPDF",
-                url: "https://www.chatpdf.com/",
-                logo: "https://cdn-1.webcatalog.io/catalog/chatpdf/chatpdf-icon-filled-256.webp?v=1714781358321",
-                description: "Interaja com documentos PDF via IA",
-                icon: "file-pdf"
             },
             {
                 name: "Grok (X)",
@@ -150,11 +192,60 @@ const categories = [
                 icon: "robot"
             },
             {
+                name: "Kimi",
+                url: "https://www.kimi.com/",
+                logo: "https://moonshotai.github.io/Branding-Guide/scenarios/03-icon-without-kimi/kimi-icon-rounded-corner.png",
+                description: "IA avançada da Moonshot com raciocínio profundo",
+                icon: "star"
+            },
+            {
+                name: "Qwen",
+                url: "https://qwen.ai/home",
+                logo: "https://cdn.jsdelivr.net/gh/callback-io/allogo@main/public/logos/qwen/icon.png",
+                description: "IA da Alibaba com forte capacidade multilíngue",
+                icon: "language"
+            },
+            {
+                name: "NotebookLM",
+                url: "https://notebooklm.google.com/",
+                logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/notebooklm.svg",
+                description: "Assistente de pesquisa baseado nos seus documentos",
+                icon: "book"
+            },
+            {
+                name: "Hugging Face",
+                url: "https://huggingface.co/",
+                logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/huggingface.svg",
+                description: "Plataforma open-source com milhares de modelos de IA",
+                icon: "robot"
+            },
+            {
+                name: "OpenRouter",
+                url: "https://openrouter.ai/",
+                logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/openrouter.svg",
+                description: "Acesse múltiplos modelos de IA em uma única plataforma",
+                icon: "route"
+            },
+            {
+                name: "OpenCode (GitHub)",
+                url: "https://github.com/anomalyco/opencode",
+                logo: "https://raw.githubusercontent.com/anomalyco/opencode/dev/packages/console/app/src/asset/brand/opencode-logo-light-square.svg",
+                description: "Agente de codificação open source para desenvolvedores",
+                icon: "terminal"
+            },
+            {
                 name: "There's an AI for That",
                 url: "https://theresanaiforthat.com/",
                 logo: "https://theresanaiforthat.com/favicon.ico",
                 description: "Catálogo de ferramentas de IA para todas as áreas",
                 icon: "list"
+            },
+            {
+                name: "Adam (adam.new)",
+                url: "https://adam.new/",
+                logo: "https://adam.new/cadam/adam-logo.svg",
+                description: "Assistente de IA para produtividade e automação",
+                icon: "robot"
             }
         ]
     },
@@ -175,6 +266,34 @@ const categories = [
                 logo: "https://images.seeklogo.com/logo-png/43/1/supabase-logo-png_seeklogo-435677.png",
                 description: "Alternativa open-source ao Firebase",
                 icon: "layer-group"
+            },
+            {
+                name: "Neon",
+                url: "https://neon.com/",
+                logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/neon.svg",
+                description: "Banco de dados PostgreSQL serverless",
+                icon: "bolt"
+            },
+            {
+                name: "AWS (Amazon RDS)",
+                url: "https://aws.amazon.com/pt/rds/",
+                logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/amazonaws.svg",
+                description: "Serviço de banco de dados relacional na nuvem",
+                icon: "cloud"
+            },
+            {
+                name: "MongoDB Atlas",
+                url: "https://www.mongodb.com/atlas",
+                logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mongodb.svg",
+                description: "Banco de dados NoSQL na nuvem",
+                icon: "leaf"
+            },
+            {
+                name: "DataDog",
+                url: "https://www.datadoghq.com/",
+                logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/datadog.svg",
+                description: "Monitoramento e observabilidade para infraestrutura cloud",
+                icon: "chart-line"
             }
         ]
     },
@@ -213,7 +332,7 @@ const categories = [
             {
                 name: "FontAwesome",
                 url: "https://fontawesome.com/search?o=r&m=free",
-                logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Font_Awesome_logomark_blue.svg/512px-Font_Awesome_logomark_blue.svg.png?20220809042108",
+                logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/fontawesome.svg",
                 description: "Ícones gratuitos para projetos",
                 icon: "icons"
             },
@@ -244,6 +363,27 @@ const categories = [
                 logo: "https://www.evernote.design/assets/images/cssgradient.jpg",
                 description: "Crie gradientes personalizados",
                 icon: "fill-drip"
+            },
+            {
+                name: "Canva",
+                url: "https://www.canva.com/",
+                logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/canva.svg",
+                description: "Design gráfico acessível com templates prontos",
+                icon: "paint-brush"
+            },
+            {
+                name: "Figma",
+                url: "https://www.figma.com/",
+                logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/figma.svg",
+                description: "Design de interfaces colaborativo online",
+                icon: "pen-ruler"
+            },
+            {
+                name: "Heroicons",
+                url: "https://heroicons.com/",
+                logo: "https://cdn-b.saashub.com/images/app/service_logos/155/7902ojac7nj3/large.png?1635277061",
+                description: "Ícones SVG handcrafted para web",
+                icon: "icons"
             }
         ]
     },
@@ -261,7 +401,7 @@ const categories = [
             {
                 name: "Netlify",
                 url: "https://www.netlify.com/",
-                logo: "https://www.netlify.com/v3/static/favicon/apple-touch-icon.png",
+                logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/netlify.svg",
                 description: "Hospedagem e automação de sites estáticos",
                 icon: "server"
             },
@@ -320,6 +460,20 @@ const categories = [
                 logo: "https://cdn.freebiesupply.com/logos/large/2x/wetransfer-logo-png-transparent.png",
                 description: "Compartilhamento de arquivos grandes",
                 icon: "cloud-upload-alt"
+            },
+            {
+                name: "Render",
+                url: "https://render.com/",
+                logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/render.svg",
+                description: "Hospedagem gratuita de apps e sites estáticos",
+                icon: "server"
+            },
+            {
+                name: "GitHub Pages",
+                url: "https://pages.github.com/",
+                logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/githubpages.svg",
+                description: "Hospede sites estáticos direto do GitHub",
+                icon: "code-branch"
             }
         ]
     },
@@ -376,32 +530,25 @@ const categories = [
                 icon: "code-branch"
             },
             {
-                name: "1º MAR",
-                url: "https://padlet.com/brunobarroscarvalho/1-s-rie-ceng-m999n4mca08cwhkh",
-                logo: "https://padlet.com/favicon.ico",
-                description: "Padlet da turma 1º MAR",
-                icon: "school"
-            },
-            {
-                name: "3º MAR",
-                url: "https://padlet.com/brunobarroscarvalho/3-s-rie-mar-hv94l07s8av6451n",
-                logo: "https://padlet.com/favicon.ico",
-                description: "Padlet da turma 3º MAR",
-                icon: "graduation-cap"
-            },
-            {
-                name: "7º INT VR",
-                url: "https://padlet.com/brunobarroscarvalho/7-ano-vr-a48nm36culhq4c48",
-                logo: "https://padlet.com/favicon.ico",
-                description: "Padlet da turma 7º INT VR",
-                icon: "child"
-            },
-            {
                 name: "THACKATHON",
                 url: "https://padlet.com/salgadofelipe07/breakout-room/d6AO26l9rj3ovojL-8wOpvYgk34oz6AYo",
                 logo: "https://padlet.com/favicon.ico",
                 description: "Padlet para o THACKATHON",
                 icon: "users"
+            },
+            {
+                name: "8º INT VR",
+                url: "#",
+                logo: "https://padlet.com/favicon.ico",
+                description: "Padlet da turma 8º INT VR",
+                icon: "child"
+            },
+            {
+                name: "9º INT VR",
+                url: "#",
+                logo: "https://padlet.com/favicon.ico",
+                description: "Padlet da turma 9º INT VR",
+                icon: "child"
             }
         ]
     }
@@ -426,12 +573,11 @@ function checkFirstVisit() {
     }
 }
 
-// Atualizar função de criação de cards para reduzir efeitos
+// Atualizar função de criação de cards para adicionar animações de entrada
 function createResourceCard(resource, index) {
     const card = document.createElement('div');
     card.className = 'resource-card';
-    
-    // Removidas todas as animações AOS para melhorar performance
+    card.style.animationDelay = `${index * 50}ms`;
     
     card.innerHTML = `
         <div class="card-content">
@@ -453,23 +599,27 @@ function createResourceCard(resource, index) {
     return card;
 }
 
-// Renderização das categorias
+// Renderização das categorias com animação de entrada e stats
 function renderCategories() {
     const container = document.getElementById('categoriesContainer');
     if (!container) return;
     
     container.innerHTML = '';
     
+    let totalLinks = 0;
+    
     categories.forEach((category, categoryIndex) => {
         const categorySection = document.createElement('section');
         categorySection.className = 'category';
+        categorySection.style.animationDelay = `${categoryIndex * 100}ms`;
         
-        // Removidas todas as animações AOS para melhorar performance
+        totalLinks += category.links.length;
         
         categorySection.innerHTML = `
             <h2 class="category-title">
                 <i class="fas fa-${category.icon}"></i>
                 ${category.title}
+                <span class="category-badge">${category.links.length}</span>
             </h2>
             <div class="link-grid"></div>
         `;
@@ -482,7 +632,17 @@ function renderCategories() {
         container.appendChild(categorySection);
     });
 
-    // Removida a atualização do AOS
+    // Atualiza stats
+    const totalCategoriesEl = document.getElementById('totalCategories');
+    const totalLinksEl = document.getElementById('totalLinks');
+    if (totalCategoriesEl) totalCategoriesEl.textContent = categories.length;
+    if (totalLinksEl) totalLinksEl.textContent = totalLinks;
+    
+    // Atualiza contador de resultados
+    updateSearchCount();
+    
+    // Re-aplica cursor glow nos novos cards
+    setupCursorGlow();
 }
 
 // Sistema de Tema
@@ -526,24 +686,89 @@ function initTheme() {
     themeToggle.addEventListener('click', toggleTheme);
 }
 
-// Função de pesquisa com animação suave
+// Função de pesquisa com animação suave e contador
+let totalVisible = 0;
+
+function updateSearchCount() {
+    const searchResultsEl = document.getElementById('searchResults');
+    if (!searchResultsEl) return;
+    searchResultsEl.textContent = totalVisible > 0 ? totalVisible : '—';
+}
+
 function filterResources() {
     const searchInput = document.getElementById('searchInput');
     const cards = document.querySelectorAll('.resource-card');
+    const categories = document.querySelectorAll('.category');
     const searchTerm = searchInput.value.toLowerCase().trim();
+
+    totalVisible = 0;
 
     cards.forEach(card => {
         const title = card.querySelector('.card-title').textContent.toLowerCase();
         const description = card.querySelector('.card-description').textContent.toLowerCase();
         
-        if (title.includes(searchTerm) || description.includes(searchTerm)) {
+        if (!searchTerm || title.includes(searchTerm) || description.includes(searchTerm)) {
             card.style.display = 'block';
+            totalVisible++;
         } else {
             card.style.display = 'none';
         }
     });
 
-    // Removida a atualização do AOS
+    // Esconde categorias sem resultados visíveis
+    categories.forEach(section => {
+        const visibleCards = section.querySelectorAll('.resource-card[style*="display: block"], .resource-card:not([style*="display: none"])');
+        const hasVisible = Array.from(visibleCards).some(c => c.style.display !== 'none');
+        section.style.display = (searchTerm && !hasVisible) ? 'none' : 'block';
+    });
+
+    updateSearchCount();
+
+    // Classe visual na barra de busca
+    const searchContainer = searchInput.closest('.search-container');
+    if (searchContainer) {
+        searchContainer.classList.toggle('has-results', totalVisible > 0 && searchTerm);
+    }
+
+    // Mostra estado vazio se nenhum resultado
+    const existingEmpty = document.getElementById('emptyState');
+    if (searchTerm && totalVisible === 0) {
+        if (!existingEmpty) {
+            const emptyState = document.createElement('div');
+            emptyState.id = 'emptyState';
+            emptyState.className = 'empty-state';
+            emptyState.innerHTML = `
+                <i class="fas fa-search"></i>
+                <h3>Nenhum recurso encontrado</h3>
+                <p>Tente buscar por outro termo</p>
+            `;
+            document.getElementById('categoriesContainer').appendChild(emptyState);
+        }
+    } else if (existingEmpty) {
+        existingEmpty.remove();
+    }
+}
+
+// Atalhos de teclado
+function setupKeyboardShortcuts() {
+    document.addEventListener('keydown', (e) => {
+        const mainSearch = document.getElementById('searchInput');
+        
+        // Ctrl+K is handled in setupFloatingSearch
+        if (e.key === 'Escape' && document.activeElement === mainSearch) {
+            mainSearch.value = '';
+            mainSearch.blur();
+            filterResources();
+        }
+        
+        // Also handle escape on floating search
+        const floatingInput = document.getElementById('floatingSearchInput');
+        if (e.key === 'Escape' && document.activeElement === floatingInput) {
+            floatingInput.value = '';
+            floatingInput.blur();
+            filterResources();
+        }
+    });
 }
 
 // --- PWA Install Button for Mobile ---
@@ -585,6 +810,131 @@ function setupPwaInstallButton() {
     }
 }
 
+// Cursor Glow Effect nos cards
+function setupCursorGlow() {
+    document.querySelectorAll('.resource-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+    
+    // Global cursor glow for dark mode
+    document.addEventListener('mousemove', (e) => {
+        document.body.style.setProperty('--mouse-x', `${e.clientX}px`);
+        document.body.style.setProperty('--mouse-y', `${e.clientY}px`);
+    });
+}
+
+// Floating Search Bar
+function setupFloatingSearch() {
+    const floatingSearch = document.getElementById('floatingSearch');
+    const floatingInput = document.getElementById('floatingSearchInput');
+    const mainSearch = document.getElementById('searchInput');
+    
+    if (!floatingSearch || !floatingInput || !mainSearch) return;
+    
+    // Show/hide based on scroll
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        const headerHeight = document.querySelector('header').offsetHeight;
+        
+        if (scrollY > headerHeight) {
+            floatingSearch.classList.add('visible');
+        } else {
+            floatingSearch.classList.remove('visible');
+            floatingInput.value = mainSearch.value;
+        }
+        
+        lastScroll = scrollY;
+    });
+    
+    // Sync with main search
+    floatingInput.addEventListener('input', () => {
+        mainSearch.value = floatingInput.value;
+        filterResources();
+    });
+    
+    mainSearch.addEventListener('input', () => {
+        floatingInput.value = mainSearch.value;
+    });
+    
+    // Keyboard shortcut
+    document.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+            e.preventDefault();
+            if (floatingSearch.classList.contains('visible')) {
+                floatingInput.focus();
+            } else {
+                mainSearch.focus();
+                mainSearch.select();
+            }
+        }
+    });
+}
+
+// Floating Particles - bubble rise effect
+function setupParticles() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    
+    let container = document.getElementById('particles-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'particles-container';
+        document.body.appendChild(container);
+    }
+    
+    const isMobile = window.innerWidth < 768;
+    const count = isMobile ? 11 : 22;
+    
+    for (let i = 0; i < count; i++) {
+        const particle = document.createElement('div');
+        const isBlue = Math.random() > 0.5;
+        particle.className = `particle ${isBlue ? 'particle--blue' : 'particle--teal'}`;
+        
+        const left = Math.random() * 100;
+        const delay = Math.random() * 8;
+        const duration = Math.random() * 6 + 8;
+        const size = Math.random() * 2 + 2;
+        
+        particle.style.cssText = `
+            left: ${left}%;
+            animation-delay: ${delay}s;
+            animation-duration: ${duration}s;
+            width: ${size}px;
+            height: ${size}px;
+        `;
+        
+        container.appendChild(particle);
+    }
+}
+
+// Scroll to Top Button
+function setupScrollToTop() {
+    const btn = document.createElement('button');
+    btn.className = 'scroll-top-btn';
+    btn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    btn.setAttribute('aria-label', 'Voltar ao topo');
+    document.body.appendChild(btn);
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+
+    btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
 // Inicialização
 document.addEventListener('DOMContentLoaded', () => {
     try {
@@ -596,6 +946,21 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Setup botão de instalar PWA
         setupPwaInstallButton();
+        
+        // Setup floating particles
+        setupParticles();
+        
+        // Setup botão de voltar ao topo
+        setupScrollToTop();
+        
+        // Setup floating search bar
+        setupFloatingSearch();
+        
+        // Setup atalhos de teclado
+        setupKeyboardShortcuts();
+        
+        // Setup cursor glow nos cards
+        setupCursorGlow();
         
         // Remove o skeleton loader
         const loading = document.getElementById('loading');
@@ -614,10 +979,10 @@ document.addEventListener('DOMContentLoaded', () => {
             debounceTimer = setTimeout(filterResources, 300);
         });
         
-        // Atualiza o ano no footer
-        const currentYearElement = document.getElementById('currentYear');
-        if (currentYearElement) {
-            currentYearElement.textContent = new Date().getFullYear();
+        // Ano dinâmico no footer
+        const footerYear = document.getElementById('footerYear');
+        if (footerYear) {
+            footerYear.textContent = new Date().getFullYear();
         }
         
     } catch (error) {
@@ -625,9 +990,39 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Service Worker
+// Service Worker - registro com controle de atualização
 if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js');
+    window.addEventListener('load', async () => {
+        try {
+            const registration = await navigator.serviceWorker.register('sw.js');
+            
+            // Detectar quando um novo SW está instalado e pronto
+            registration.addEventListener('updatefound', () => {
+                const newWorker = registration.installing;
+                newWorker.addEventListener('statechange', () => {
+                    if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                        // Nova versão disponível - notificar usuário
+                        console.log('[App] Nova versão disponível. Atualize para melhor experiência.');
+                        if (typeof showUpdatePrompt === 'function') {
+                            showUpdatePrompt();
+                        }
+                    }
+                });
+            });
+
+            // Recuperar de falhas de instalação
+            registration.addEventListener('error', (err) => {
+                console.warn('[App] SW registration failed:', err);
+            });
+        } catch (err) {
+            console.warn('[App] SW not supported:', err);
+        }
+    });
+
+    // Listener para mensagens do SW
+    navigator.serviceWorker.addEventListener('message', (event) => {
+        if (event.data.type === 'CACHE_STATUS') {
+            console.log('[SW Cache]', event.data);
+        }
     });
 }

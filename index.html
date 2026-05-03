@@ -24,9 +24,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- AOS CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
     <!-- Estilos -->
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -38,8 +35,9 @@
                     <input type="text" id="searchInput" 
                            placeholder="Pesquisar recursos...">
                     <i class="fas fa-search"></i>
+                    <kbd class="search-kbd"><span class="hidden-md">Ctrl</span><span class="hidden-md">K</span></kbd>
                 </div>
-                <button id="themeToggle">
+                <button id="themeToggle" aria-label="Alternar tema">
                     <i class="fas fa-moon"></i>
                 </button>
             </div>
@@ -53,10 +51,32 @@
             <h1 class="profbt">Central do Profbt</h1>
             <h2 class="header-title">
                 <i class="fas fa-robot tech-welcome-icon"></i> Bem-vindo(a) ao seu portal educacional!
-                <div class="text-lg mt-3 opacity-90">Encontre todos os recursos que você precisa aqui.</div>
             </h2>
         </nav>
     </header>
+
+    <!-- Stats Bar - overlaps header curve -->
+    <div class="stats-bar-wrapper">
+        <div class="stats-bar">
+            <div class="stat-item">
+                <i class="fas fa-layer-group"></i>
+                <span class="stat-value" id="totalCategories">0</span>
+                <span class="stat-label">Categorias</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <i class="fas fa-link"></i>
+                <span class="stat-value" id="totalLinks">0</span>
+                <span class="stat-label">Recursos</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <i class="fas fa-bolt"></i>
+                <span class="stat-value" id="searchResults">—</span>
+                <span class="stat-label">Resultados</span>
+            </div>
+        </div>
+    </div>
 
     <main>
         <div class="container" id="categoriesContainer">
@@ -69,46 +89,82 @@
         </div>
     </main>
 
+    <!-- Floating Search Bar -->
+    <div class="floating-search" id="floatingSearch">
+        <div class="floating-search-inner">
+            <input type="text" id="floatingSearchInput" placeholder="Pesquisar recursos...">
+            <i class="fas fa-search"></i>
+        </div>
+    </div>
+
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <p>
-                    2026&copy; - Feito com <i class="fas fa-heart footer-heart"></i> por <span class="footer-name">Prof. Bruno Carvalho</span>.
-                </p>
-                <button id="installPwaBtn" style="display:none; margin-top:1.5em; padding:0.8em 1.5em; border-radius:1em; background:#0d9488; color:#fff; font-weight:600; border:none; font-size:1.1em; box-shadow:0 2px 8px rgba(0,0,0,0.08); cursor:pointer;">Instalar aplicativo</button>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="assets/logos/logo.svg" alt="Logo" class="footer-logo-img">
+                    </div>
+                    <h3 class="footer-title">Central do Profbt</h3>
+                    <p class="footer-tagline">Portal educacional para alunos do Ensino Fundamental e Médio</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4 class="footer-heading">Acesso Rápido</h4>
+                    <ul class="footer-list">
+                        <li><a href="https://github.com/profbt" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a></li>
+                        <li><a href="https://vscode.dev/" target="_blank" rel="noopener"><i class="fas fa-code"></i> VS Code</a></li>
+                        <li><a href="https://www.kimi.com/" target="_blank" rel="noopener"><i class="fas fa-robot"></i> Kimi AI</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4 class="footer-heading">Recursos</h4>
+                    <ul class="footer-list">
+                        <li><a href="https://www.w3schools.com/" target="_blank" rel="noopener"><i class="fas fa-book"></i> W3Schools</a></li>
+                        <li><a href="https://theresanaiforthat.com/" target="_blank" rel="noopener"><i class="fas fa-magic"></i> AI Tools</a></li>
+                        <li><a href="https://openrouter.ai/" target="_blank" rel="noopener"><i class="fas fa-route"></i> OpenRouter</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-bottom">
+                    <p class="footer-copy">
+                        <span id="footerYear"></span>&copy; Feito com <i class="fas fa-heart footer-heart"></i> por <span class="footer-name">Prof. Bruno Carvalho</span>
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://github.com/profbt" target="_blank" rel="noopener" aria-label="GitHub" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" target="_blank" rel="noopener" aria-label="YouTube" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
             </div>
+
+            <button id="installPwaBtn" style="display:none; margin-top:1.5em; padding:0.8em 1.5em; border-radius:1em; background:#0d9488; color:#fff; font-weight:600; border:none; font-size:1.1em; box-shadow:0 2px 8px rgba(0,0,0,0.08); cursor:pointer;">Instalar aplicativo</button>
         </div>
     </footer>
 
     <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        // Inicializa AOS com configurações mínimas
-        AOS.init({
-            duration: 400,          // Reduzido para 400ms
-            offset: 20,             // Reduzido para 20px
-            once: true,             // Só executa uma vez
-            mirror: false,
-            anchorPlacement: 'top-bottom',
-            easing: 'ease',         // Simplificado
-            disable: true           // Desabilita completamente o AOS
-        });
-    </script>
-    <script src="app.js"></script>
+    <div id="swUpdatePrompt" class="sw-update-prompt" style="display: none;">
+        <span>Nova versão disponível!</span>
+        <button id="swUpdateBtn" class="btn-update">Atualizar</button>
+    </div>
 
-    <!-- Service Worker -->
+    <script src="app.js"></script>
     <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(registration => {
-                        console.log('Service Worker registrado com sucesso:', registration);
-                    })
-                    .catch(error => {
-                        console.log('Falha ao registrar o Service Worker:', error);
-                    });
-            });
+        // Mostrar prompt de atualização do SW
+        function showUpdatePrompt() {
+            const prompt = document.getElementById('swUpdatePrompt');
+            if (prompt) {
+                prompt.style.display = 'flex';
+            }
         }
+
+        // Botão de atualização
+        document.getElementById('swUpdateBtn')?.addEventListener('click', () => {
+            if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+                navigator.serviceWorker.controller.postMessage({ type: 'SKIP_WAITING' });
+            }
+            window.location.reload();
+        });
     </script>
 </body>
 </html>
