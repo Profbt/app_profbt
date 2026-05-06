@@ -246,20 +246,6 @@ const categories = [
                 logo: "https://adam.new/cadam/adam-logo.svg",
                 description: "Assistente de IA para produtividade e automação",
                 icon: "robot"
-            },
-            {
-                name: "Pika Labs",
-                url: "https://pika.art",
-                logo: "https://pika.art/favicon.ico",
-                description: "Geração de vídeos estilizados e virais com 60 quadros iniciais grátis",
-                icon: "magic"
-            },
-            {
-                name: "Luma Dream Machine",
-                url: "https://lumalabs.ai/dream-machine",
-                logo: "https://lumalabs.ai/favicon.ico",
-                description: "Vídeos com movimentos suaves e câmera lenta natural. 30 gerações grátis por mês",
-                icon: "cloud-moon"
             }
         ]
     },
@@ -875,4 +861,168 @@ function setupFloatingSearch() {
     });
     
     mainSearch.addEventListener('input', () => {
-        floating
+        floatingInput.value = mainSearch.value;
+    });
+    
+    // Keyboard shortcut
+    document.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+            e.preventDefault();
+            if (floatingSearch.classList.contains('visible')) {
+                floatingInput.focus();
+            } else {
+                mainSearch.focus();
+                mainSearch.select();
+            }
+        }
+    });
+}
+
+// Floating Particles - bubble rise effect
+function setupParticles() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    
+    let container = document.getElementById('particles-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'particles-container';
+        document.body.appendChild(container);
+    }
+    
+    const isMobile = window.innerWidth < 768;
+    const count = isMobile ? 11 : 22;
+    
+    for (let i = 0; i < count; i++) {
+        const particle = document.createElement('div');
+        const isBlue = Math.random() > 0.5;
+        particle.className = `particle ${isBlue ? 'particle--blue' : 'particle--teal'}`;
+        
+        const left = Math.random() * 100;
+        const delay = Math.random() * 8;
+        const duration = Math.random() * 6 + 8;
+        const size = Math.random() * 2 + 2;
+        
+        particle.style.cssText = `
+            left: ${left}%;
+            animation-delay: ${delay}s;
+            animation-duration: ${duration}s;
+            width: ${size}px;
+            height: ${size}px;
+        `;
+        
+        container.appendChild(particle);
+    }
+}
+
+// Scroll to Top Button
+function setupScrollToTop() {
+    const btn = document.createElement('button');
+    btn.className = 'scroll-top-btn';
+    btn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    btn.setAttribute('aria-label', 'Voltar ao topo');
+    document.body.appendChild(btn);
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+
+    btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+// Inicialização
+document.addEventListener('DOMContentLoaded', () => {
+    try {
+        // Inicializa o tema
+        initTheme();
+        
+        // Verificar primeiro acesso
+        checkFirstVisit();
+        
+        // Setup botão de instalar PWA
+        setupPwaInstallButton();
+        
+        // Setup floating particles
+        setupParticles();
+        
+        // Setup botão de voltar ao topo
+        setupScrollToTop();
+        
+        // Setup floating search bar
+        setupFloatingSearch();
+        
+        // Setup atalhos de teclado
+        setupKeyboardShortcuts();
+        
+        // Setup cursor glow nos cards
+        setupCursorGlow();
+        
+        // Remove o skeleton loader
+        const loading = document.getElementById('loading');
+        if (loading) {
+            loading.remove();
+        }
+        
+        // Renderiza as categorias
+        renderCategories();
+        
+        // Configura a pesquisa com debounce
+        const searchInput = document.getElementById('searchInput');
+        let debounceTimer;
+        searchInput.addEventListener('input', () => {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(filterResources, 300);
+        });
+        
+        // Ano dinâmico no footer
+        const footerYear = document.getElementById('footerYear');
+        if (footerYear) {
+            footerYear.textContent = new Date().getFullYear();
+        }
+        
+    } catch (error) {
+        console.error('Erro na inicialização:', error);
+    }
+});
+
+// Service Worker - registro com controle de atualização
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', async () => {
+        try {
+            const registration = await navigator.serviceWorker.register('sw.js');
+            
+            // Detectar quando um novo SW está instalado e pronto
+            registration.addEventListener('updatefound', () => {
+                const newWorker = registration.installing;
+                newWorker.addEventListener('statechange', () => {
+                    if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                        // Nova versão disponível - notificar usuário
+                        console.log('[App] Nova versão disponível. Atualize para melhor experiência.');
+                        if (typeof showUpdatePrompt === 'function') {
+                            showUpdatePrompt();
+                        }
+                    }
+                });
+            });
+
+            // Recuperar de falhas de instalação
+            registration.addEventListener('error', (err) => {
+                console.warn('[App] SW registration failed:', err);
+            });
+        } catch (err) {
+            console.warn('[App] SW not supported:', err);
+        }
+    });
+
+    // Listener para mensagens do SW
+    navigator.serviceWorker.addEventListener('message', (event) => {
+        if (event.data.type === 'CACHE_STATUS') {
+            console.log('[SW Cache]', event.data);
+        }
+    });
+}
