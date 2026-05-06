@@ -109,10 +109,10 @@ const categories = [
                 icon: "pen-nib"
             },
             {
-                name: "Glitch",
-                url: "https://glitch.com/",
-                logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/glitch.svg",
-                description: "Criação rápida de apps web com hospedar",
+                name: "Base44",
+                url: "https://base44.com//",
+                logo: "/assets/logos/base44.png",
+                description: "Criação rápida de apps web.",
                 icon: "bolt"
             },
             {
