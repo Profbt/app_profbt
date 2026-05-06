@@ -248,6 +248,27 @@ const categories = [
                 icon: "robot"
             },
             {
+                name: "Poe",
+                url: "https://poe.com",
+                logo: "https://poe.com/favicon.ico",
+                description: "Agrega vários modelos (Claude, GPT, Gemini) em um só lugar",
+                icon: "comment-dots"
+            },
+            {
+                name: "Leonardo.ai",
+                url: "https://leonardo.ai",
+                logo: "https://leonardo.ai/favicon.ico",
+                description: "Geração de imagens e vídeos com IA, 150 tokens/dia grátis",
+                icon: "palette"
+            },
+            {
+                name: "Runway ML",
+                url: "https://runwayml.com",
+                logo: "https://runwayml.com/favicon.ico",
+                description: "Ferramentas de IA para vídeo e criatividade, 125 créditos iniciais",
+                icon: "video"
+            },
+            {
                 name: "Pika Labs",
                 url: "https://pika.art",
                 logo: "https://pika.art/favicon.ico",
@@ -398,6 +419,27 @@ const categories = [
                 logo: "https://cdn-b.saashub.com/images/app/service_logos/155/7902ojac7nj3/large.png?1635277061",
                 description: "Ícones SVG handcrafted para web",
                 icon: "icons"
+            },
+            {
+                name: "SVGRepo",
+                url: "https://www.svgrepo.com",
+                logo: "https://www.svgrepo.com/favicon.ico",
+                description: "Mais de 500.000 ícones e SVGs gratuitos organizados",
+                icon: "icons"
+            },
+            {
+                name: "Fontsource",
+                url: "https://fontsource.org",
+                logo: "https://fontsource.org/favicon.ico",
+                description: "Fontes open-source para self-hosting (alternativa ao Google Fonts)",
+                icon: "font"
+            },
+            {
+                name: "Relume",
+                url: "https://www.relume.io",
+                logo: "https://www.relume.io/favicon.ico",
+                description: "Componentes Figma + gerador de sites com IA para Webflow",
+                icon: "paint-brush"
             }
         ]
     },

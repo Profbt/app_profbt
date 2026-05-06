@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v10.0';
+const CACHE_VERSION = 'v10.1';
 const CACHE_NAME = `profbt-${CACHE_VERSION}`;
 const STATIC_CACHE = `static-${CACHE_VERSION}`;
 const DYNAMIC_CACHE = `dynamic-${CACHE_VERSION}`;
