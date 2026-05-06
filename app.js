@@ -246,6 +246,20 @@ const categories = [
                 logo: "https://adam.new/cadam/adam-logo.svg",
                 description: "Assistente de IA para produtividade e automação",
                 icon: "robot"
+            },
+            {
+                name: "Pika Labs",
+                url: "https://pika.art",
+                logo: "https://pika.art/favicon.ico",
+                description: "Geração de vídeos estilizados e virais com 60 quadros iniciais grátis",
+                icon: "magic"
+            },
+            {
+                name: "Luma Dream Machine",
+                url: "https://lumalabs.ai/dream-machine",
+                logo: "https://lumalabs.ai/favicon.ico",
+                description: "Vídeos com movimentos suaves e câmera lenta natural. 30 gerações grátis por mês",
+                icon: "cloud-moon"
             }
         ]
     },
