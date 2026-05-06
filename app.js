@@ -257,14 +257,14 @@ const categories = [
             {
                 name: "Leonardo.ai",
                 url: "https://leonardo.ai",
-                logo: "https://leonardo.ai/favicon.ico",
+                logo: "assets/logos/leonardoai.svg",
                 description: "Geração de imagens e vídeos com IA, 150 tokens/dia grátis",
                 icon: "palette"
             },
             {
                 name: "Runway ML",
                 url: "https://runwayml.com",
-                logo: "https://runwayml.com/favicon.ico",
+                logo: "https://raw.githubusercontent.com/lobehub/lobe-icons/refs/heads/master/packages/static-png/light/runway.png",
                 description: "Ferramentas de IA para vídeo e criatividade, 125 créditos iniciais",
                 icon: "video"
             },
@@ -278,7 +278,7 @@ const categories = [
             {
                 name: "Luma Dream Machine",
                 url: "https://lumalabs.ai/dream-machine",
-                logo: "https://lumalabs.ai/favicon.ico",
+                logo: "https://raw.githubusercontent.com/lobehub/lobe-icons/refs/heads/master/packages/static-png/light/luma.png",
                 description: "Vídeos com movimentos suaves e câmera lenta natural. 30 gerações grátis por mês",
                 icon: "cloud-moon"
             }
@@ -423,7 +423,7 @@ const categories = [
             {
                 name: "SVGRepo",
                 url: "https://www.svgrepo.com",
-                logo: "https://www.svgrepo.com/favicon.ico",
+                logo: "https://www.vectorlogo.zone/logos/svgrepo/svgrepo-ar21.svg",
                 description: "Mais de 500.000 ícones e SVGs gratuitos organizados",
                 icon: "icons"
             },
@@ -437,7 +437,7 @@ const categories = [
             {
                 name: "Relume",
                 url: "https://www.relume.io",
-                logo: "https://www.relume.io/favicon.ico",
+                logo: "https://cdn.prod.website-files.com/6177739448baa66404ce1d9c/658a0be5968a859c7b8d46b2_relume%20logo%20with%20symbol.png",
                 description: "Componentes Figma + gerador de sites com IA para Webflow",
                 icon: "paint-brush"
             }
