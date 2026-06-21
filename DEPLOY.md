@@ -7,7 +7,8 @@ Este repositório é publicado em ambiente de homologação pelo Coolify.
 - Aplicação no Coolify: central-homologacao
 - Projeto no Coolify: ProfBT
 - Ambiente interno no Coolify: production
-- Domínio de homologação: https://teste-central.profbt.com.br
+- Domínio definitivo: https://central.profbt.com.br
+- Domínio de conferência/homologação: https://teste-central.profbt.com.br
 - Repositório: Profbt/app_profbt
 - Branch de deploy: main
 - Tipo de aplicação: site estático/PWA
@@ -27,7 +28,7 @@ Toda alteração deve seguir este fluxo:
 4. Revisar o Pull Request.
 5. Fazer merge na main.
 6. Aguardar o auto deploy do Coolify.
-7. Validar https://teste-central.profbt.com.br.
+7. Validar https://central.profbt.com.br e https://teste-central.profbt.com.br.
 
 ## Fluxo com Hermes
 
@@ -61,13 +62,21 @@ Após merge na main, o GitHub App envia o evento para o Coolify e o deploy é in
 
 Validar pelo terminal:
 
+curl -I https://central.profbt.com.br
 curl -I https://teste-central.profbt.com.br
 
 Resultado esperado:
 
 HTTP/2 200
 
-Também validar arquivos principais:
+Também validar arquivos principais no domínio definitivo:
+
+curl -I https://central.profbt.com.br/app.js
+curl -I https://central.profbt.com.br/styles.css
+curl -I https://central.profbt.com.br/manifest.json
+curl -I https://central.profbt.com.br/sw.js
+
+E validar os mesmos arquivos no domínio de conferência/homologação:
 
 curl -I https://teste-central.profbt.com.br/app.js
 curl -I https://teste-central.profbt.com.br/styles.css
@@ -80,21 +89,31 @@ Resultado esperado para todos:
 
 ## Domínios
 
-Domínio em uso para homologação:
+Domínio definitivo ativo:
+
+- central.profbt.com.br
+
+Domínio de conferência/homologação ativo:
 
 - teste-central.profbt.com.br
 
-Domínios que não devem ser alterados nesta fase:
+Domínios que não devem ser removidos nesta fase:
 
 - central.profbt.com.br
-- profbt.com.br
+- teste-central.profbt.com.br
 - profbt.vercel.app
 
 A Vercel deve permanecer ativa temporariamente porque alunos ainda podem ter favoritos antigos salvos.
 
 ## Cloudflare
 
-O registro DNS de homologação deve permanecer como:
+Os registros DNS da Central devem permanecer como:
+
+- Tipo: A
+- Nome: central
+- Conteúdo: 137.131.161.79
+- Proxy: Somente DNS
+- TTL: Auto
 
 - Tipo: A
 - Nome: teste-central
@@ -106,6 +125,10 @@ Não ativar proxy laranja nesta fase.
 
 ## Produção definitiva
 
-Ainda não configurar central.profbt.com.br.
+O domínio definitivo da Central já está ativo em:
 
-A migração para o domínio definitivo só deve acontecer depois de nova validação e decisão explícita.
+- https://central.profbt.com.br
+
+O domínio teste-central.profbt.com.br deve permanecer ativo como conferência/homologação.
+
+A Vercel deve permanecer ativa temporariamente como legado, até decisão explícita de remoção.
