@@ -104,8 +104,3 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 <div align="center">
   Feito com ❤️ por Prof. Bruno Carvalho
 </div> 
-## Teste de auto deploy Coolify
-
-Teste criado em 2026-06-21T15:57:50+00:00 para validar o fluxo GitHub App + Coolify.
-
-Esta alteração não modifica a aplicação visualmente. Serve apenas para confirmar que, após merge na main, o Coolify faz redeploy automático de https://teste-central.profbt.com.br.
